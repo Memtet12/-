@@ -5,6 +5,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using Color = System.Drawing.Color;
+using Brush = System.Drawing.Brush;
 
 namespace SandpileFractalWPF
 {
@@ -68,26 +70,27 @@ namespace SandpileFractalWPF
 
         private void Topple()
         {
-            bool toppled = true;
-            while (toppled)
+            bool toppled = false;
+            for (int i = 0; i < size; i++)
             {
-                toppled = false;
-                for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
                 {
-                    for (int j = 0; j < size; j++)
+                    if (grid[i, j] >= 4)
                     {
-                        if (grid[i, j] >= 4)
-                        {
-                            int excess = grid[i, j] / 4;
-                            grid[i, j] %= 4;
-                            if (i > 0) grid[i - 1, j] += excess;
-                            if (i < size - 1) grid[i + 1, j] += excess;
-                            if (j > 0) grid[i, j - 1] += excess;
-                            if (j < size - 1) grid[i, j + 1] += excess;
-                            toppled = true;
-                        }
+                        int excess = grid[i, j] / 4;
+                        grid[i, j] %= 4;
+                        if (i > 0) grid[i - 1, j] += excess;
+                        if (i < size - 1) grid[i + 1, j] += excess;
+                        if (j > 0) grid[i, j - 1] += excess;
+                        if (j < size - 1) grid[i, j + 1] += excess;
+                        toppled = true;
                     }
                 }
+            }
+
+            if (toppled)
+            {
+                Topple(); // Рекурсивный вызов
             }
         }
 
