@@ -14,8 +14,12 @@ namespace SandpileFractalWPF
     {
         private SandpileFractal sandpile;
         private DispatcherTimer timer;
+        private DispatcherTimer elapsedTimer;
         private int size = 400;
         private int scaleFactor = 2;
+        private int sandAmount = 1000;
+        private DateTime startTime;
+        private TimeSpan totalElapsedTime;
 
         public MainWindow()
         {
@@ -26,12 +30,26 @@ namespace SandpileFractalWPF
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(50); // 20 FPS
             timer.Tick += Timer_Tick;
-            timer.Start();
+
+            // Настройка таймера для отслеживания времени работы
+            elapsedTimer = new DispatcherTimer();
+            elapsedTimer.Interval = TimeSpan.FromSeconds(1);
+            elapsedTimer.Tick += ElapsedTimer_Tick;
+
+            // Настройка начальных значений слайдеров
+            SizeSlider.Value = size;
+            ScaleFactorSlider.Value = scaleFactor;
+            SandAmountSlider.Value = sandAmount;
+
+            // Подписка на события изменения значений слайдеров
+            SizeSlider.ValueChanged += (s, e) => UpdateParameters();
+            ScaleFactorSlider.ValueChanged += (s, e) => UpdateParameters();
+            SandAmountSlider.ValueChanged += (s, e) => UpdateParameters();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            sandpile.AddSand(size / 2, size / 2, 1000);
+            sandpile.AddSand(size / 2, size / 2, sandAmount);
             UpdateImage();
         }
 
@@ -49,6 +67,43 @@ namespace SandpileFractalWPF
                 SandpileImage.Source = bitmapImage;
             }
         }
+
+        private void UpdateParameters()
+        {
+            size = (int)SizeSlider.Value;
+            scaleFactor = (int)ScaleFactorSlider.Value;
+            sandAmount = (int)SandAmountSlider.Value;
+
+            // Пересоздаем сетку фрактала при изменении размера
+            sandpile = new SandpileFractal(size);
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Start();
+            elapsedTimer.Start();
+            startTime = DateTime.Now;
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            elapsedTimer.Stop();
+            totalElapsedTime += DateTime.Now - startTime;
+        }
+
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Start();
+            elapsedTimer.Start();
+            startTime = DateTime.Now;
+        }
+
+        private void ElapsedTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan currentElapsedTime = DateTime.Now - startTime;
+            TimerTextBlock.Text = $"Время работы: {totalElapsedTime + currentElapsedTime:hh\\:mm\\:ss}";
+        }
     }
 
     public class SandpileFractal
@@ -64,6 +119,11 @@ namespace SandpileFractalWPF
 
         public void AddSand(int x, int y, int amount)
         {
+            if (x < 0 || x >= size || y < 0 || y >= size)
+            {
+                throw new ArgumentOutOfRangeException("x or y", "Индекс находился вне границ массива.");
+            }
+
             grid[x, y] += amount;
             Topple();
         }

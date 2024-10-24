@@ -3,6 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Sandpile Fractal" Height="800" Width="800">
     <Grid>
-        <Image x:Name="SandpileImage" Stretch="Uniform" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Контролы для изменения параметров -->
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Размер сетки:" Width="100" VerticalAlignment="Center" />
+                <Slider x:Name="SizeSlider" Minimum="100" Maximum="1000" Value="400" Width="200" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" />
+                <TextBox x:Name="SizeTextBox" Width="50" VerticalAlignment="Center" Text="{Binding ElementName=SizeSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat=F0}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Масштабный коэффициент:" Width="100" VerticalAlignment="Center" />
+                <Slider x:Name="ScaleFactorSlider" Minimum="1" Maximum="10" Value="2" Width="200" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" />
+                <TextBox x:Name="ScaleFactorTextBox" Width="50" VerticalAlignment="Center" Text="{Binding ElementName=ScaleFactorSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat=F0}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Количество песка:" Width="100" VerticalAlignment="Center" />
+                <Slider x:Name="SandAmountSlider" Minimum="100" Maximum="5000" Value="1000" Width="200" VerticalAlignment="Center" IsSnapToTickEnabled="True" TickFrequency="1" />
+                <TextBox x:Name="SandAmountTextBox" Width="50" VerticalAlignment="Center" Text="{Binding ElementName=SandAmountSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat=F0}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Button x:Name="StartButton" Content="Старт" Width="100" Click="StartButton_Click" />
+                <Button x:Name="StopButton" Content="Стоп" Width="100" Click="StopButton_Click" />
+                <Button x:Name="ContinueButton" Content="Продолжить" Width="100" Click="ContinueButton_Click" />
+            </StackPanel>
+            <TextBlock x:Name="TimerTextBlock" Margin="0,10" Text="Время работы: 00:00:00" />
+        </StackPanel>
+
+        <!-- Изображение фрактала -->
+        <Image x:Name="SandpileImage" Grid.Row="1" Stretch="Uniform" />
     </Grid>
 </Window>
