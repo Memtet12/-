@@ -1,0 +1,21 @@
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\Песчаная куча в впф.exe.config
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\Песчаная куча в впф.exe
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\Песчаная куча в впф.pdb
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф.csproj.AssemblyReference.cache
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\MainWindow.baml
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\MainWindow.g.cs
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\App.g.cs
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф_MarkupCompile.cache
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф.g.resources
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная_куча_в_впф.Properties.Resources.resources
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф.csproj.GenerateResource.cache
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф.csproj.CoreCompileInputs.cache
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф.exe
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная куча в впф.pdb
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\LiveCharts.dll
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\LiveCharts.pdb
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\LiveCharts.xml
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Andrey\source\repos\Песчаная куча в впф\Песчаная куча в впф\obj\Debug\Песчаная.524378BE.Up2Date
